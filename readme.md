@@ -1,4 +1,4 @@
-# trim-around-tag [![CircleCI](https://img.shields.io/circleci/project/github/vladgolubev/trim-around-tag.svg)](https://circleci.com/gh/vladgolubev/trim-around-tag) ![](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
+# trim-around-tag [![CircleCI](https://circleci.com/gh/vladgolubev/trim-around-tag/tree/master.svg?style=svg)](https://circleci.com/gh/vladgolubev/trim-around-tag/tree/master) ![](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
 
 > Trims text to max length around custom HTML tag
 
