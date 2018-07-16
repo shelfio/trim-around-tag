@@ -1,5 +1,5 @@
 {
-  "name": "trim-around-tag",
+  "name": "@shelf/trim-around-tag",
   "version": "1.0.0",
   "description": "Trims text to max length around custom HTML tag",
   "license": "MIT",
@@ -43,5 +43,8 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
