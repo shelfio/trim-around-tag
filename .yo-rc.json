@@ -1,0 +1,8 @@
+{
+  "@vladholubiev/generator-nm": {
+    "promptValues": {
+      "githubUsername": "vladgolubev",
+      "website": "https://vladholubiev.com"
+    }
+  }
+}
