@@ -11,7 +11,7 @@ $ yarn add @shelf/trim-around-tag
 ## Usage
 
 ```js
-const {trimAroundTag} = require('@shelf/trim-around-tag');
+const {trimAroundTag} = require('@shelf/strim-around-tag');
 
 trimAroundTag({
   // Long text to trim around HTML tag
@@ -36,4 +36,4 @@ anticipated further strengthening due to the favorable conditions and good organ
 
 ## License
 
-MIT © [Vlad Holubiev](https://vladholubiev.com)
+MIT © [Shelf](https://shelf.io)

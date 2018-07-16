@@ -3,11 +3,11 @@
   "version": "1.0.1",
   "description": "Trims text to max length around custom HTML tag",
   "license": "MIT",
-  "repository": "vladgolubev/trim-around-tag",
+  "repository": "shelfio/trim-around-tag",
   "author": {
     "name": "Vlad Holubiev",
-    "email": "golubev.vld@gmail.com",
-    "url": "vladholubiev.com"
+    "email": "vlad@shelf.io",
+    "url": "shelf.io"
   },
   "engines": {
     "node": ">=6"
