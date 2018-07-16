@@ -5,13 +5,13 @@
 ## Install
 
 ```
-$ yarn add trim-around-tag
+$ yarn add @shelf/trim-around-tag
 ```
 
 ## Usage
 
 ```js
-const {trimAroundTag} = require('trim-around-tag');
+const {trimAroundTag} = require('@shelf/trim-around-tag');
 
 trimAroundTag({
   // Long text to trim around HTML tag
