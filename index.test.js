@@ -84,6 +84,50 @@ describe('#trimTextAroundTag', () => {
     );
   });
 
+  it('should truncate text around highlight (sample 2) and add omission marks', () => {
+    // lots of text between 2 highlights
+    const text = [
+      `Extremely Severe Cyclonic Storm Nilofar Extremely severe cyclonic storm (IMD scale) `,
+      `Category 4 (Saffir–Simpson scale) Nilofar shortly before peak intensity on October 28, `,
+      `2014 Formed October 25, 2014 Dissipated October 31, 2014 Highest winds 3-minute sustained: `,
+      `205 km/h (125 mph) 1-minute sustained: 215 km/h (130 mph) Lowest pressure 950 hPa (mbar); `,
+      `28.05 inHg Fatalities 4 total Damage Minimal Areas affected Oman, India, Pakistan Part of `,
+      `the 2014 North Indian Ocean cyclone season Cyclone Nilofar Extremely Severe Cyclonic Storm `,
+      `Nilofar was, at the time, the <em>third</em>- <em>strongest</em> cyclone in the Arabian Sea. `,
+      `In late October 2014, it reached peak maximum sustained winds estimated between 205 km/h `,
+      `(125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named it Nilofar; `,
+      `the name refers to the water lily, and was suggested by Pakistan.[1] The western fringes of `,
+      `the storm caused flash flooding in northeastern Oman, killing four people.Category 4 `,
+      `(Saffir–Simpson scale) Nilofar shortly before peak intensity on October 28, 2014 `,
+      `Formed October 25, 2014 Dissipated October 31, 2014 Highest winds 3-minute sustained: `,
+      `205 km/h (125 mph) 1-minute sustained: 215 km/h (130 mph) Lowest pressure 950 hPa (mbar); `,
+      `28.05 inHg Fatalities 4 total Damage Minimal Areas affected Oman, India, Pakistan Part of `,
+      `the 2014 North Indian Ocean cyclone season Cyclone Nilofar Extremely Severe Cyclonic Storm `,
+      `Nilofar was, at the time, the <em>third</em>- <em>strongest</em> cyclone in the Arabian Sea. `,
+      `In late October 2014, it reached peak maximum sustained winds estimated between 205 km/h `,
+      `(125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named it Nilofar; `,
+      `the name refers to the water lily, and was suggested by Pakistan.[1] `,
+      `The western fringes of the storm caused flash flooding in northeastern Oman, killing four people.`
+    ].join('');
+    const result = trimTextAroundTag({text, omission: '...'});
+
+    expect(result).toEqual(
+      [
+        `...Fatalities 4 total Damage Minimal Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean `,
+        `cyclone season Cyclone Nilofar Extremely Severe Cyclonic Storm Nilofar was, at the time, the <em>third</em>- <em>strongest</em> cyclone `,
+        `in the Arabian Sea. In late October 2014, it reached peak maximum sustained winds `,
+        `estimated between 205 km/h (125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named it Nilofar; `,
+        `the name refers to the water lily, and was suggested by Pakistan.[1] The western fringes of the storm caused flash flooding in northeastern Oman, `,
+        `killing four people.Category 4 (Saffir–Simpson scale) Nilofar shortly before peak intensity on October `,
+        `28, 2014 Formed October 25, 2014 Dissipated October 31, 2014 Highest winds 3-minute sustained: `,
+        `205 km/h (125 mph) 1-minute sustained: 215 km/h (130 mph) Lowest pressure 950 hPa (mbar); 28.05 inHg Fatalities `,
+        `4 total Damage Minimal Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean cyclone `,
+        `season Cyclone Nilofar Extremely Severe Cyclonic Storm Nilofar was, at the time, the <em>third</em>- <em>strongest</em> cyclone `,
+        `in the Arabian Sea. In late October 2014, it reached peak maximum sustained winds estimated between 205 km/h (125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named it...`
+      ].join('')
+    );
+  });
+
   it('should truncate text to ~50 chars around highlight', () => {
     const text = [
       `The storm was rapidly intensifying at the time, after the wind shear `,

@@ -21,7 +21,9 @@ trimAroundTag({
   // Max length of chars to leave around HTML tag
   maxLengthAround: 200,
   // HTML tag to trim text around
-  tag: 'em'
+  tag: 'em',
+  //(Optional) add '...' from cut side
+  omission: '...'
 });
 //=> anticipated further strengthening due to the favorable conditions and good organization.[12] At 18:00 UTC on October 28, the IMD estimated peak 3-minute winds of 205 km/h (125 mph).[2] At the time, it was the <em>third</em>-<em>strongest</em> storm on record in the Arabian Sea.[13] On October 29, Nilofar started weakening due to increased wind shear, and the convection diminished in intensity.[14] At the same time, the storm turned northeastward
 ```
@@ -32,7 +34,7 @@ The storm was rapidly intensifying at the time, after the wind shear had decreas
 
 Into this:
 
-anticipated further strengthening due to the favorable conditions and good organization.[12] At 18:00 UTC on October 28, the IMD estimated peak 3-minute winds of 205 km/h (125 mph).[2] At the time, it was the `<em>third</em>-<em>strongest</em>` storm on record in the Arabian Sea.[13] On October 29, Nilofar started weakening due to increased wind shear, and the convection diminished in intensity.[14] At the same time, the storm turned northeastward
+...anticipated further strengthening due to the favorable conditions and good organization.[12] At 18:00 UTC on October 28, the IMD estimated peak 3-minute winds of 205 km/h (125 mph).[2] At the time, it was the `<em>third</em>-<em>strongest</em>` storm on record in the Arabian Sea.[13] On October 29, Nilofar started weakening due to increased wind shear, and the convection diminished in intensity.[14] At the same time, the storm turned northeastward...
 
 ## License
 

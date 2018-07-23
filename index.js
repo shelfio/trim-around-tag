@@ -1,4 +1,9 @@
-module.exports.trimTextAroundTag = function({text = '', maxLengthAround = 200, tag = 'em'}) {
+module.exports.trimTextAroundTag = function({
+  text = '',
+  maxLengthAround = 200,
+  tag = 'em',
+  omission = ''
+}) {
   const OPEN_TAG = `<${tag}>`;
   const CLOSE_TAG = `</${tag}>`;
 
@@ -18,9 +23,9 @@ module.exports.trimTextAroundTag = function({text = '', maxLengthAround = 200, t
   const textAfterHighlight = getTextAfterHighlight({text, CLOSE_TAG});
 
   return [
-    trimTextUntilSize(textBeforeHighlight, maxLengthAround),
+    trimTextUntilSize(textBeforeHighlight, maxLengthAround, omission),
     getTextBetweenHighlightBoundaries({text, OPEN_TAG, CLOSE_TAG}),
-    trimTextUntilSizeFromEnd(textAfterHighlight, maxLengthAround)
+    trimTextUntilSizeFromEnd(textAfterHighlight, maxLengthAround, omission)
   ].join('');
 };
 
@@ -62,17 +67,21 @@ function getTextBetweenHighlightBoundaries({text, OPEN_TAG, CLOSE_TAG}) {
   return text.slice(firstHighlightStartIndex, lastHighlightEndIndex);
 }
 
-function trimTextUntilSize(text, maxLengthAround) {
+function trimTextUntilSize(text, maxLengthAround, omission) {
   const wordsInput = text.split(' ').reverse();
   const wordsOutput = getWordsUntilLength(wordsInput, maxLengthAround);
-
+  if (wordsInput.length > wordsOutput.length) {
+    return `${omission}${wordsOutput.reverse().join(' ')}`;
+  }
   return wordsOutput.reverse().join(' ');
 }
 
-function trimTextUntilSizeFromEnd(text, maxLengthAround) {
+function trimTextUntilSizeFromEnd(text, maxLengthAround, omission) {
   const wordsInput = text.split(' ');
   const wordsOutput = getWordsUntilLength(wordsInput, maxLengthAround);
-
+  if (wordsInput.length > wordsOutput.length) {
+    return `${wordsOutput.join(' ')}${omission}`;
+  }
   return wordsOutput.join(' ');
 }
 
