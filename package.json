@@ -1,6 +1,6 @@
 {
   "name": "@shelf/trim-around-tag",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Trims text to max length around custom HTML tag",
   "license": "MIT",
   "repository": "shelfio/trim-around-tag",
