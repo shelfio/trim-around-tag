@@ -23,6 +23,10 @@
     "index.js",
     "dist"
   ],
+  "main": "dist/trim-around-tag.js",
+  "umd:main": "dist/trim-around-tag.umd.js",
+  "module": "dist/trim-around-tag.m.js",
+  "source": "src/trim-around-tag.js",
   "keywords": [],
   "devDependencies": {
     "eslint": "5.2.0",

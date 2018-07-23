@@ -42,6 +42,10 @@ The storm was rapidly intensifying at the time, after the wind shear had decreas
 
 </details>
 
+### Browsers
+
+Source is built to ES5 syntax using [microbundle](https://github.com/developit/microbundle) and put into `dist/` folder.
+
 ## License
 
 MIT © [Shelf](https://shelf.io)
