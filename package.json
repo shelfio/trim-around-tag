@@ -13,12 +13,15 @@
     "node": ">=6"
   },
   "scripts": {
+    "build": "microbundle",
     "coverage": "jest --coverage",
     "lint": "eslint . --fix",
+    "prepublishOnly": "yarn build",
     "test": "jest"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "dist"
   ],
   "keywords": [],
   "devDependencies": {
@@ -28,6 +31,7 @@
     "husky": "0.15.0-rc.13",
     "jest": "23.4.1",
     "lint-staged": "7.2.0",
+    "microbundle": "0.6.0",
     "prettier": "1.13.7"
   },
   "jest": {
