@@ -31,11 +31,11 @@ describe('#trimTextAroundTag', () => {
 
     expect(result).toEqual(
       [
-        `anticipated further strengthening due to the favorable conditions and good organization.`,
+        `further strengthening due to the favorable conditions and good organization.`,
         `[12] At 18:00 UTC on October 28, the IMD estimated peak 3-minute winds of 205 km/h (125 mph).`,
         `[2] At the time, it was the <em>third</em>-<em>strongest</em> storm on record in the Arabian `,
         `Sea.[13] On October 29, Nilofar started weakening due to increased wind shear, and the convection `,
-        `diminished in intensity.[14] At the same time, the storm turned northeastward`
+        `diminished in intensity.[14] At the same time, the storm turned`
       ].join('')
     );
   });
@@ -69,7 +69,7 @@ describe('#trimTextAroundTag', () => {
 
     expect(result).toEqual(
       [
-        `Fatalities 4 total Damage Minimal Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean `,
+        `4 total Damage Minimal Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean `,
         `cyclone season Cyclone Nilofar Extremely Severe Cyclonic Storm Nilofar was, at the time, the <em>third</em>- <em>strongest</em> cyclone `,
         `in the Arabian Sea. In late October 2014, it reached peak maximum sustained winds `,
         `estimated between 205 km/h (125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named it Nilofar; `,
@@ -79,7 +79,7 @@ describe('#trimTextAroundTag', () => {
         `205 km/h (125 mph) 1-minute sustained: 215 km/h (130 mph) Lowest pressure 950 hPa (mbar); 28.05 inHg Fatalities `,
         `4 total Damage Minimal Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean cyclone `,
         `season Cyclone Nilofar Extremely Severe Cyclonic Storm Nilofar was, at the time, the <em>third</em>- <em>strongest</em> cyclone `,
-        `in the Arabian Sea. In late October 2014, it reached peak maximum sustained winds estimated between 205 km/h (125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named it`
+        `in the Arabian Sea. In late October 2014, it reached peak maximum sustained winds estimated between 205 km/h (125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named`
       ].join('')
     );
   });
@@ -113,7 +113,7 @@ describe('#trimTextAroundTag', () => {
 
     expect(result).toEqual(
       [
-        `...Fatalities 4 total Damage Minimal Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean `,
+        `...4 total Damage Minimal Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean `,
         `cyclone season Cyclone Nilofar Extremely Severe Cyclonic Storm Nilofar was, at the time, the <em>third</em>- <em>strongest</em> cyclone `,
         `in the Arabian Sea. In late October 2014, it reached peak maximum sustained winds `,
         `estimated between 205 km/h (125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named it Nilofar; `,
@@ -123,7 +123,7 @@ describe('#trimTextAroundTag', () => {
         `205 km/h (125 mph) 1-minute sustained: 215 km/h (130 mph) Lowest pressure 950 hPa (mbar); 28.05 inHg Fatalities `,
         `4 total Damage Minimal Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean cyclone `,
         `season Cyclone Nilofar Extremely Severe Cyclonic Storm Nilofar was, at the time, the <em>third</em>- <em>strongest</em> cyclone `,
-        `in the Arabian Sea. In late October 2014, it reached peak maximum sustained winds estimated between 205 km/h (125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named it...`
+        `in the Arabian Sea. In late October 2014, it reached peak maximum sustained winds estimated between 205 km/h (125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named...`
       ].join('')
     );
   });
@@ -148,7 +148,7 @@ describe('#trimTextAroundTag', () => {
     const result = trimTextAroundTag({text, maxLengthAround: 50});
 
     expect(result).toEqual(
-      `of 205 km/h (125 mph).[2] At the time, it was the <em>third</em>-<em>strongest</em> storm on record in the Arabian Sea.[13] On October`
+      `205 km/h (125 mph).[2] At the time, it was the <em>third</em>-<em>strongest</em> storm on record in the Arabian Sea.[13] On`
     );
   });
 
@@ -157,6 +157,30 @@ describe('#trimTextAroundTag', () => {
     const result = trimTextAroundTag({text, maxLengthAround: 50});
 
     expect(result).toEqual(text);
+  });
+
+  it('should not truncate text which has no highlights', () => {
+    const text = [
+      `asdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsadds`,
+      `fasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjag`,
+      `dkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfas`,
+      `dfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsf`,
+      `asdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasd`,
+      `fasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagds`,
+      `kjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsf asdasdasdfasdfsadF asdasda`,
+      `sdfasdfsadF asd fsa Df asdf asd Fa SD test search <em>term</em> to highlight 1 asdasdfasdfasdf. sagdfdfgth `,
+      `asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF `,
+      `asdasdasdfasdfsadF djfg gf dfghdfg h fdg hgf h dfg h test search <em>term</em> to highlight 2. asd as df sadf sa dg sad g sadg test search <em>term</em> to highlight 3 asdf Asd fsa DFa DSf sad..`
+    ].join('');
+    const result = trimTextAroundTag({text, maxLengthAround: 80, omission: ' ... '});
+
+    expect(result).toEqual(
+      [
+        ` ... asdasdasdfasdfsadF asdasdasdfasdfsadF asd fsa Df asdf asd Fa SD test search <em>term</em> to highlight 1 asdasdfasdfasdf. `,
+        `sagdfdfgth asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF `,
+        `asdasdasdfasdfsadF djfg gf dfghdfg h fdg hgf h dfg h test search <em>term</em> to highlight 2. asd as df sadf sa dg sad g sadg test search <em>term</em> to highlight 3 asdf Asd fsa DFa DSf sad..`
+      ].join('')
+    );
   });
 
   it('should not truncate text which has only highlights', () => {

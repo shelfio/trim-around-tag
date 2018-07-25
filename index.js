@@ -70,18 +70,22 @@ function getTextBetweenHighlightBoundaries({text, OPEN_TAG, CLOSE_TAG}) {
 function trimTextUntilSize(text, maxLengthAround, omission) {
   const wordsInput = text.split(' ').reverse();
   const wordsOutput = getWordsUntilLength(wordsInput, maxLengthAround);
+
   if (wordsInput.length > wordsOutput.length) {
     return `${omission}${wordsOutput.reverse().join(' ')}`;
   }
+
   return wordsOutput.reverse().join(' ');
 }
 
 function trimTextUntilSizeFromEnd(text, maxLengthAround, omission) {
   const wordsInput = text.split(' ');
   const wordsOutput = getWordsUntilLength(wordsInput, maxLengthAround);
+
   if (wordsInput.length > wordsOutput.length) {
     return `${wordsOutput.join(' ')}${omission}`;
   }
+
   return wordsOutput.join(' ');
 }
 
@@ -90,6 +94,12 @@ function getWordsUntilLength(words, maxLength) {
   let outputLength = 0;
 
   for (let word of words) {
+    const willTextBecomeTooLong = outputLength + word.length + 1 > maxLength;
+
+    if (willTextBecomeTooLong) {
+      return wordsOutput;
+    }
+
     const isTextStillShort = outputLength <= maxLength;
 
     if (isTextStillShort) {
