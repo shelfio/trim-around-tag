@@ -72,7 +72,7 @@ function trimTextUntilSize(text, maxLengthAround, omission) {
   const firstWord = [...wordsInput[0]].reverse().join('');
 
   if (firstWord.length > maxLengthAround) {
-    const cropedWord = [...croppWordToGivenSize(firstWord, maxLengthAround)].reverse().join('');
+    const cropedWord = [...cropWordToGivenSize(firstWord, maxLengthAround)].reverse().join('');
 
     return `${omission}${cropedWord}`;
   }
@@ -90,7 +90,7 @@ function trimTextUntilSizeFromEnd(text, maxLengthAround, omission) {
   const firstWord = wordsInput[0];
 
   if (firstWord.length > maxLengthAround) {
-    const cropedWord = croppWordToGivenSize(firstWord, maxLengthAround);
+    const cropedWord = cropWordToGivenSize(firstWord, maxLengthAround);
 
     return `${cropedWord}${omission}`;
   }
@@ -126,9 +126,6 @@ function getWordsUntilLength(words, maxLength) {
   return wordsOutput;
 }
 
-function croppWordToGivenSize(word, outputLength) {
-  return word
-    .split('')
-    .slice(0, outputLength)
-    .join('');
+function cropWordToGivenSize(word, outputLength) {
+  return word.slice(0, outputLength);
 }
