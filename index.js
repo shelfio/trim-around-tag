@@ -69,6 +69,17 @@ function getTextBetweenHighlightBoundaries({text, OPEN_TAG, CLOSE_TAG}) {
 
 function trimTextUntilSize(text, maxLengthAround, omission) {
   const wordsInput = text.split(' ').reverse();
+  const firstWord = wordsInput[0];
+
+  if (firstWord.length > maxLengthAround) {
+    const croppedWord = [...firstWord]
+      .reverse()
+      .slice(0, maxLengthAround)
+      .reverse()
+      .join('');
+
+    return `${omission}${croppedWord}`;
+  }
   const wordsOutput = getWordsUntilLength(wordsInput, maxLengthAround);
 
   if (wordsInput.length > wordsOutput.length) {
@@ -80,6 +91,14 @@ function trimTextUntilSize(text, maxLengthAround, omission) {
 
 function trimTextUntilSizeFromEnd(text, maxLengthAround, omission) {
   const wordsInput = text.split(' ');
+  const firstWord = wordsInput[0];
+
+  if (firstWord.length > maxLengthAround) {
+    const croppedWord = firstWord.slice(0, maxLengthAround);
+
+    return `${croppedWord}${omission}`;
+  }
+
   const wordsOutput = getWordsUntilLength(wordsInput, maxLengthAround);
 
   if (wordsInput.length > wordsOutput.length) {
