@@ -69,6 +69,13 @@ function getTextBetweenHighlightBoundaries({text, OPEN_TAG, CLOSE_TAG}) {
 
 function trimTextUntilSize(text, maxLengthAround, omission) {
   const wordsInput = text.split(' ').reverse();
+  const firstWord = [...wordsInput[0]].reverse().join('');
+
+  if (firstWord.length > maxLengthAround) {
+    const cropedWord = [...croppWordToGivenSize(firstWord, maxLengthAround)].reverse().join('');
+
+    return `${omission}${cropedWord}`;
+  }
   const wordsOutput = getWordsUntilLength(wordsInput, maxLengthAround);
 
   if (wordsInput.length > wordsOutput.length) {
@@ -80,6 +87,14 @@ function trimTextUntilSize(text, maxLengthAround, omission) {
 
 function trimTextUntilSizeFromEnd(text, maxLengthAround, omission) {
   const wordsInput = text.split(' ');
+  const firstWord = wordsInput[0];
+
+  if (firstWord.length > maxLengthAround) {
+    const cropedWord = croppWordToGivenSize(firstWord, maxLengthAround);
+
+    return `${cropedWord}${omission}`;
+  }
+
   const wordsOutput = getWordsUntilLength(wordsInput, maxLengthAround);
 
   if (wordsInput.length > wordsOutput.length) {
@@ -109,4 +124,11 @@ function getWordsUntilLength(words, maxLength) {
   }
 
   return wordsOutput;
+}
+
+function croppWordToGivenSize(word, outputLength) {
+  return word
+    .split('')
+    .slice(0, outputLength)
+    .join('');
 }

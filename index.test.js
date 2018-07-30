@@ -189,4 +189,11 @@ describe('#trimTextAroundTag', () => {
 
     expect(result).toEqual(text);
   });
+
+  it('should truncate text w/o spaces', () => {
+    const text = `${'a'.repeat(500)}oi<em>hello</em>td${'a'.repeat(500)}`;
+    const result = trimTextAroundTag({text, maxLengthAround: 4, omission: '...'});
+
+    expect(result).toEqual(`...aaoi<em>hello</em>tdaa...`);
+  });
 });
