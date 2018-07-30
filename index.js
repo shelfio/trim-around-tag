@@ -72,13 +72,13 @@ function trimTextUntilSize(text, maxLengthAround, omission) {
   const firstWord = wordsInput[0];
 
   if (firstWord.length > maxLengthAround) {
-    const cropedWord = [...firstWord]
+    const croppedWord = [...firstWord]
       .reverse()
       .slice(0, maxLengthAround)
       .reverse()
       .join('');
 
-    return `${omission}${cropedWord}`;
+    return `${omission}${croppedWord}`;
   }
   const wordsOutput = getWordsUntilLength(wordsInput, maxLengthAround);
 
@@ -94,9 +94,9 @@ function trimTextUntilSizeFromEnd(text, maxLengthAround, omission) {
   const firstWord = wordsInput[0];
 
   if (firstWord.length > maxLengthAround) {
-    const cropedWord = [...firstWord].slice(0, maxLengthAround).join('');
+    const croppedWord = firstWord.slice(0, maxLengthAround);
 
-    return `${cropedWord}${omission}`;
+    return `${croppedWord}${omission}`;
   }
 
   const wordsOutput = getWordsUntilLength(wordsInput, maxLengthAround);
