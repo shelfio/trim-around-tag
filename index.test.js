@@ -71,8 +71,7 @@ describe('#trimTextAroundTag', () => {
       `4 total Damage Minimal Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean cyclone ` +
         `season Cyclone Nilofar Extremely Severe Cyclonic Storm Nilofar was, at the time, the <em>third</em>- <em>strongest</em>4 total Damage Minimal ` +
         `Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean cyclone season Cyclone Nilofar Extremely Severe Cyclonic Storm Nilofar ` +
-        `was, at the time, the <em>third</em>- <em>strongest</em> cyclone in the Arabian Sea. In late October 2014, it reached peak maximum sustained winds ` +
-        `estimated between 205 km/h (125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named`
+        `was, at the time, the <em>third</em>- <em>strongest</em> cyclone in the Arabian Sea. In late October 2014, it`
     );
   });
 
@@ -108,8 +107,7 @@ describe('#trimTextAroundTag', () => {
         `Cyclone Nilofar Extremely Severe Cyclonic Storm Nilofar was, at the time, the <em>third</em>- <em>strongest</em>...4 ` +
         `total Damage Minimal Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean cyclone season Cyclone Nilofar ` +
         `Extremely Severe Cyclonic Storm Nilofar was, at the time, the <em>third</em>- <em>strongest</em> cyclone in the Arabian Sea. In ` +
-        `late October 2014, it reached peak maximum sustained winds estimated between 205 km/h (125 mph) and 215 km/h (130 mph). The India` +
-        ` Meteorological Department (IMD) named...`
+        `late October 201...`
     );
   });
 
@@ -160,7 +158,7 @@ describe('#trimTextAroundTag', () => {
     const result = trimTextAroundTag({text, maxLengthAround: 80, omission: ' ... '});
 
     expect(result).toEqual(
-      ` ... asdasdasdfasdfsadF asdasdasdfasdfsadF asd fsa Df asdf asd Fa SD test search <em>term</em> ... asdasdasdfasdfsadF djfg gf dfghdfg h fdg hgf h dfg h test search <em>term</em> to highlight 2. asd as df sadf sa dg sad g sadg test search <em>term</em> to highlight 3 asdf Asd fsa DFa DSf sad..`
+      `... asdasdasdfasdfsadF asdasdasdfasdfsadF asd fsa Df asdf asd Fa SD test search <em>term</em> ... asdasdasdfasdfsadF djfg gf dfghdfg h fdg hgf h dfg h test search <em>term</em> to highlight 2. asd as df sadf sa dg sad g sadg test search <em>term</em> to highlight 3 asdf Asd fsa DFa DSf sad..`
     );
   });
 
@@ -183,9 +181,17 @@ describe('#trimTextAroundTag', () => {
     const result = trimTextAroundTag({text, maxLengthAround: 80, omission: ' ... '});
 
     expect(result).toEqual(
-      ` ... asdasdasdfasdfsadF asdasdasdfasdfsadF asd fsa Df asdf asd Fa SD test search <em>term</em> ` +
-        `... asdasdasdfasdfsadF djfg gf dfghdfg h fdg hgf h dfg h test search &lt;em&gt;<em>term</em> ` +
-        `... to highlight 2. asd as df sadf sa dg sad g sadg test search &lt;em&gt;<em>term</em>&lt;/em&gt; to highlight 3 asdf Asd fsa DFa DSf sad..`
+      `... asdasdasdfasdfsadF asdasdasdfasdfsadF asd fsa Df asdf asd Fa SD test ` +
+        `search <em>term</em> ... asdasdasdfasdfsadF djfg gf dfghdfg h fdg hgf h dfg ` +
+        `h test search &lt;em&gt;<em>term</em> ... to highlight 2. asd as df sadf sa dg ` +
+        `sad g sadg test search &lt;em&gt;<em>term</em>&lt;/em&gt; to highlight 3 asdf Asd fsa DFa DSf sad..`
     );
+  });
+
+  it('should aggressively trim text when maxTotalLength is small', () => {
+    const text = `foo bar foo bar foo bar foo bar <em>hello</em> foo bar `;
+    const result = trimTextAroundTag({text, maxTotalLength: 10});
+
+    expect(result).toEqual(`foo bar fo`);
   });
 });
