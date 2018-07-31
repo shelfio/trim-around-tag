@@ -16,7 +16,7 @@
     "build": "microbundle",
     "coverage": "jest --coverage",
     "lint": "eslint . --fix",
-    "prepublish": "yarn build",
+    "prepack": "yarn build",
     "test": "jest"
   },
   "files": [
@@ -26,7 +26,7 @@
   "main": "dist/trim-around-tag.js",
   "umd:main": "dist/trim-around-tag.umd.js",
   "module": "dist/trim-around-tag.m.js",
-  "source": "src/trim-around-tag.js",
+  "source": "index.js",
   "keywords": [],
   "devDependencies": {
     "eslint": "5.2.0",
