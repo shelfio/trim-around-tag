@@ -15,8 +15,8 @@
   "scripts": {
     "build": "microbundle",
     "coverage": "jest --coverage",
-    "lint": "eslint . --fix",
     "prepare": "yarn build",
+    "lint": "eslint . --fix",
     "test": "jest"
   },
   "files": [
