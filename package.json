@@ -16,7 +16,7 @@
     "build": "microbundle",
     "coverage": "jest --coverage",
     "lint": "eslint . --fix",
-    "prepublishOnly": "yarn build",
+    "prepack": "yarn build",
     "test": "jest"
   },
   "files": [
