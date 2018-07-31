@@ -19,14 +19,21 @@ module.exports.trimTextAroundTag = function({
     return text;
   }
 
-  const textBeforeHighlight = getTextBeforeHighlight({text, OPEN_TAG});
-  const textAfterHighlight = getTextAfterHighlight({text, CLOSE_TAG});
+  const textParts = text.split(new RegExp(`<\/?${tag}>`));
 
-  return [
-    trimTextUntilSize(textBeforeHighlight, maxLengthAround, omission),
-    getTextBetweenHighlightBoundaries({text, OPEN_TAG, CLOSE_TAG}),
-    trimTextUntilSizeFromEnd(textAfterHighlight, maxLengthAround, omission)
-  ].join('');
+  return textParts
+    .map((textPart, i) => {
+      if (i === textParts.length - 1) {
+        return trimTextUntilSizeFromEnd(textPart, maxLengthAround, omission);
+      }
+
+      if (i % 2 === 0) {
+        return trimTextUntilSize(textPart, maxLengthAround, omission) + '<em>';
+      } else {
+        return trimTextUntilSizeFromEnd(textPart, maxLengthAround, omission) + '</em>';
+      }
+    })
+    .join('');
 };
 
 function isTextTooSmallToTrim(text, maxLengthAround) {
@@ -58,13 +65,6 @@ function isTextAroundHighlightsSmallEnough({text, maxLengthAround, OPEN_TAG, CLO
   const isTextAfterSmallEnough = textAfterHighlight.length <= maxLengthAround;
 
   return isTextBeforeSmallEnough && isTextAfterSmallEnough;
-}
-
-function getTextBetweenHighlightBoundaries({text, OPEN_TAG, CLOSE_TAG}) {
-  const firstHighlightStartIndex = text.indexOf(OPEN_TAG);
-  const lastHighlightEndIndex = text.lastIndexOf(CLOSE_TAG) + CLOSE_TAG.length;
-
-  return text.slice(firstHighlightStartIndex, lastHighlightEndIndex);
 }
 
 function trimTextUntilSize(text, maxLengthAround, omission) {

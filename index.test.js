@@ -68,19 +68,11 @@ describe('#trimTextAroundTag', () => {
     const result = trimTextAroundTag({text});
 
     expect(result).toEqual(
-      [
-        `4 total Damage Minimal Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean `,
-        `cyclone season Cyclone Nilofar Extremely Severe Cyclonic Storm Nilofar was, at the time, the <em>third</em>- <em>strongest</em> cyclone `,
-        `in the Arabian Sea. In late October 2014, it reached peak maximum sustained winds `,
-        `estimated between 205 km/h (125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named it Nilofar; `,
-        `the name refers to the water lily, and was suggested by Pakistan.[1] The western fringes of the storm caused flash flooding in northeastern Oman, `,
-        `killing four people.Category 4 (Saffir–Simpson scale) Nilofar shortly before peak intensity on October `,
-        `28, 2014 Formed October 25, 2014 Dissipated October 31, 2014 Highest winds 3-minute sustained: `,
-        `205 km/h (125 mph) 1-minute sustained: 215 km/h (130 mph) Lowest pressure 950 hPa (mbar); 28.05 inHg Fatalities `,
-        `4 total Damage Minimal Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean cyclone `,
-        `season Cyclone Nilofar Extremely Severe Cyclonic Storm Nilofar was, at the time, the <em>third</em>- <em>strongest</em> cyclone `,
-        `in the Arabian Sea. In late October 2014, it reached peak maximum sustained winds estimated between 205 km/h (125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named`
-      ].join('')
+      `4 total Damage Minimal Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean cyclone ` +
+        `season Cyclone Nilofar Extremely Severe Cyclonic Storm Nilofar was, at the time, the <em>third</em>- <em>strongest</em>4 total Damage Minimal ` +
+        `Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean cyclone season Cyclone Nilofar Extremely Severe Cyclonic Storm Nilofar ` +
+        `was, at the time, the <em>third</em>- <em>strongest</em> cyclone in the Arabian Sea. In late October 2014, it reached peak maximum sustained winds ` +
+        `estimated between 205 km/h (125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named`
     );
   });
 
@@ -112,19 +104,12 @@ describe('#trimTextAroundTag', () => {
     const result = trimTextAroundTag({text, omission: '...'});
 
     expect(result).toEqual(
-      [
-        `...4 total Damage Minimal Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean `,
-        `cyclone season Cyclone Nilofar Extremely Severe Cyclonic Storm Nilofar was, at the time, the <em>third</em>- <em>strongest</em> cyclone `,
-        `in the Arabian Sea. In late October 2014, it reached peak maximum sustained winds `,
-        `estimated between 205 km/h (125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named it Nilofar; `,
-        `the name refers to the water lily, and was suggested by Pakistan.[1] The western fringes of the storm caused flash flooding in northeastern Oman, `,
-        `killing four people.Category 4 (Saffir–Simpson scale) Nilofar shortly before peak intensity on October `,
-        `28, 2014 Formed October 25, 2014 Dissipated October 31, 2014 Highest winds 3-minute sustained: `,
-        `205 km/h (125 mph) 1-minute sustained: 215 km/h (130 mph) Lowest pressure 950 hPa (mbar); 28.05 inHg Fatalities `,
-        `4 total Damage Minimal Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean cyclone `,
-        `season Cyclone Nilofar Extremely Severe Cyclonic Storm Nilofar was, at the time, the <em>third</em>- <em>strongest</em> cyclone `,
-        `in the Arabian Sea. In late October 2014, it reached peak maximum sustained winds estimated between 205 km/h (125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named...`
-      ].join('')
+      `...4 total Damage Minimal Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean cyclone season ` +
+        `Cyclone Nilofar Extremely Severe Cyclonic Storm Nilofar was, at the time, the <em>third</em>- <em>strongest</em>...4 ` +
+        `total Damage Minimal Areas affected Oman, India, Pakistan Part of the 2014 North Indian Ocean cyclone season Cyclone Nilofar ` +
+        `Extremely Severe Cyclonic Storm Nilofar was, at the time, the <em>third</em>- <em>strongest</em> cyclone in the Arabian Sea. In ` +
+        `late October 2014, it reached peak maximum sustained winds estimated between 205 km/h (125 mph) and 215 km/h (130 mph). The India` +
+        ` Meteorological Department (IMD) named...`
     );
   });
 
@@ -175,11 +160,7 @@ describe('#trimTextAroundTag', () => {
     const result = trimTextAroundTag({text, maxLengthAround: 80, omission: ' ... '});
 
     expect(result).toEqual(
-      [
-        ` ... asdasdasdfasdfsadF asdasdasdfasdfsadF asd fsa Df asdf asd Fa SD test search <em>term</em> to highlight 1 asdasdfasdfasdf. `,
-        `sagdfdfgth asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF `,
-        `asdasdasdfasdfsadF djfg gf dfghdfg h fdg hgf h dfg h test search <em>term</em> to highlight 2. asd as df sadf sa dg sad g sadg test search <em>term</em> to highlight 3 asdf Asd fsa DFa DSf sad..`
-      ].join('')
+      ` ... asdasdasdfasdfsadF asdasdasdfasdfsadF asd fsa Df asdf asd Fa SD test search <em>term</em> ... asdasdasdfasdfsadF djfg gf dfghdfg h fdg hgf h dfg h test search <em>term</em> to highlight 2. asd as df sadf sa dg sad g sadg test search <em>term</em> to highlight 3 asdf Asd fsa DFa DSf sad..`
     );
   });
 
@@ -194,6 +175,17 @@ describe('#trimTextAroundTag', () => {
     const text = `${'a'.repeat(500)}oi<em>hello</em>td${'a'.repeat(500)}`;
     const result = trimTextAroundTag({text, maxLengthAround: 4, omission: '...'});
 
-    expect(result).toEqual(`...aaoi<em>hello</em>tdaa...`);
+    expect(result).toEqual(`...aaoi<em>hell...</em>tdaa...`);
+  });
+
+  it('should truncate text w/o spaces', () => {
+    const text = `asdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsf asdasdasdfasdfsadF asdasdasdfasdfsadF asd fsa Df asdf asd Fa SD test search <em>term</em> to highlight 1 asdasdfasdfasdf. sagdfdfgth asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF djfg gf dfghdfg h fdg hgf h dfg h test search &lt;em&gt;<em>term</em>&lt;/em&gt; to highlight 2. asd as df sadf sa dg sad g sadg test search &lt;em&gt;<em>term</em>&lt;/em&gt; to highlight 3 asdf Asd fsa DFa DSf sad..`;
+    const result = trimTextAroundTag({text, maxLengthAround: 80, omission: ' ... '});
+
+    expect(result).toEqual(
+      ` ... asdasdasdfasdfsadF asdasdasdfasdfsadF asd fsa Df asdf asd Fa SD test search <em>term</em> ` +
+        `... asdasdasdfasdfsadF djfg gf dfghdfg h fdg hgf h dfg h test search &lt;em&gt;<em>term</em> ` +
+        `... to highlight 2. asd as df sadf sa dg sad g sadg test search &lt;em&gt;<em>term</em>&lt;/em&gt; to highlight 3 asdf Asd fsa DFa DSf sad..`
+    );
   });
 });
