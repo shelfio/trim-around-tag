@@ -36,7 +36,7 @@
     "jest": "23.6.0",
     "lint-staged": "8.1.0",
     "microbundle": "0.9.0",
-    "prettier": "1.16.0"
+    "prettier": "1.16.1"
   },
   "jest": {
     "testEnvironment": "node"
