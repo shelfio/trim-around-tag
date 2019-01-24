@@ -15,7 +15,7 @@ module.exports.trimTextAroundTag = function({
     return text;
   }
 
-  const textParts = text.split(new RegExp(`<\/?${tag}>`));
+  const textParts = text.split(new RegExp(`</?${tag}>`));
   const textTrimmed = textParts
     .map((textPart, i) => {
       const isEvenTextPart = i % 2 === 0;
@@ -63,6 +63,7 @@ function trimTextUntilSize(text, maxLengthAround, omission) {
 
     return `${omission}${croppedWord}`;
   }
+
   const wordsOutput = getWordsUntilLength(wordsInput, maxLengthAround);
 
   if (wordsInput.length > wordsOutput.length) {
