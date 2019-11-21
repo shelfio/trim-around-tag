@@ -1,4 +1,4 @@
-const {trimTextAroundTag} = require('./index');
+import {trimTextAroundTag} from '.';
 
 describe('#trimTextAroundTag', () => {
   it('should export trimTextAroundTag', () => {

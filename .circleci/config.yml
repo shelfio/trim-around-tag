@@ -16,6 +16,7 @@ jobs:
 
       - run: yarn
       - run: yarn lint:ci
+      - run: yarn build
       - run: yarn test
 
       - save_cache:

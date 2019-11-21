@@ -1,4 +1,4 @@
-module.exports.trimTextAroundTag = function({
+export function trimTextAroundTag({
   text = '',
   maxLengthAround = 200,
   maxTotalLength = 500,
@@ -38,7 +38,7 @@ module.exports.trimTextAroundTag = function({
   }
 
   return textTrimmed.trim();
-};
+}
 
 function isTextTooSmallToTrim(text, maxLengthAround) {
   return text.length <= maxLengthAround;
@@ -96,7 +96,7 @@ function getWordsUntilLength(words, maxLength) {
   const wordsOutput = [];
   let outputLength = 0;
 
-  for (let word of words) {
+  for (const word of words) {
     const willTextBecomeTooLong = outputLength + word.length + 1 > maxLength;
 
     if (willTextBecomeTooLong) {

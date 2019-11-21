@@ -11,15 +11,15 @@
     "url": "shelf.io"
   },
   "files": [
-    "index.js",
-    "dist"
+    "lib"
   ],
-  "main": "dist/trim-around-tag.js",
-  "umd:main": "dist/trim-around-tag.umd.js",
-  "module": "dist/trim-around-tag.m.js",
-  "source": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "build": "microbundle",
+    "build": "rm -rf lib/ && yarn build:types && yarn build:webpack && rm webpack.config.js",
+    "build:types": "tsc -p tsconfig.types.json",
+    "build:webpack": "yarn build:webpack.config && NODE_ENV=production webpack",
+    "build:webpack.config": "tsc --lib es6 --skipLibCheck --allowSyntheticDefaultImports --esModuleInterop webpack.config.ts",
     "coverage": "jest --coverage",
     "lint": "eslint . --ext .js,.ts,.json --fix",
     "lint:ci": "eslint . --ext .js,.ts,.json",
@@ -46,13 +46,23 @@
     "testEnvironment": "node"
   },
   "devDependencies": {
+    "@babel/cli": "7.7.0",
+    "@babel/core": "7.7.2",
+    "@babel/preset-env": "7.7.1",
+    "@babel/preset-typescript": "7.7.2",
     "@shelf/eslint-config": "0.11.0",
+    "@types/jest": "24.0.23",
+    "@types/node": "10",
+    "babel-jest": "24.9.0",
+    "babel-loader": "8.0.6",
     "eslint": "6.6.0",
     "husky": "3.1.0",
     "jest": "24.9.0",
     "lint-staged": "9.4.3",
-    "microbundle": "0.11.0",
-    "prettier": "1.19.1"
+    "prettier": "1.19.1",
+    "typescript": "3.7.2",
+    "webpack": "4.41.2",
+    "webpack-cli": "3.3.10"
   },
   "engines": {
     "node": ">=6"
