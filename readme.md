@@ -8,8 +8,6 @@
 $ yarn add @shelf/trim-around-tag
 ```
 
-Only 533 bytes minified ✨
-
 ## Usage
 
 ```js
