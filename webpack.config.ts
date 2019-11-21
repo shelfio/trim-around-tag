@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import {resolve} from 'path';
+import PacktrackerPlugin from '@packtracker/webpack-plugin';
 
 const config: webpack.Configuration = {
   mode: 'production',
@@ -15,6 +16,13 @@ const config: webpack.Configuration = {
   optimization: {
     minimize: true
   },
+  plugins: [
+    new PacktrackerPlugin({
+      project_token: process.env.PT_PROJECT_TOKEN,
+      upload: process.env.CI === 'true',
+      fail_build: true
+    })
+  ],
   module: {
     rules: [
       {

@@ -39,3 +39,4 @@ workflows:
   build_deploy:
     jobs:
       - build
+      - packtracker/report
