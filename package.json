@@ -16,7 +16,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "rm -rf lib/ && yarn build:types && yarn build:webpack && rm webpack.config.js",
+    "build": "rm -rf lib/ && yarn build:types && yarn build:webpack",
     "build:types": "tsc -p tsconfig.types.json",
     "build:webpack": "yarn build:webpack.config && NODE_ENV=production webpack",
     "build:webpack.config": "tsc --lib es6 --skipLibCheck --allowSyntheticDefaultImports --esModuleInterop webpack.config.ts",
