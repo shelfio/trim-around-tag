@@ -13,9 +13,9 @@ Only 533 bytes minified ✨
 ## Usage
 
 ```js
-const {trimAroundTag} = require('@shelf/trim-around-tag');
+const {trimTextAroundTag} = require('@shelf/trim-around-tag');
 
-trimAroundTag({
+trimTextAroundTag({
   // Long text to trim around HTML tag
   // There is <em> text somewhere inside
   text:
