@@ -1,10 +1,18 @@
+interface TrimTextAroundTagParams {
+  text?: string;
+  maxLengthAround?: number;
+  maxTotalLength?: number;
+  tag?: string;
+  omission?: string;
+}
+
 export function trimTextAroundTag({
   text = '',
   maxLengthAround = 200,
   maxTotalLength = 500,
   tag = 'em',
   omission = ''
-}) {
+}: TrimTextAroundTagParams): string {
   const OPEN_TAG = `<${tag}>`;
 
   if (isTextTooSmallToTrim(text, maxTotalLength)) {
@@ -40,17 +48,17 @@ export function trimTextAroundTag({
   return textTrimmed.trim();
 }
 
-function isTextTooSmallToTrim(text, maxLengthAround) {
+function isTextTooSmallToTrim(text: string, maxLengthAround: number): boolean {
   return text.length <= maxLengthAround;
 }
 
-function isTextWithoutHighlights({text, OPEN_TAG}) {
+function isTextWithoutHighlights({text, OPEN_TAG}: {text: string; OPEN_TAG: string}): boolean {
   const firstHighlightStartIndex = text.indexOf(OPEN_TAG);
 
   return firstHighlightStartIndex === -1;
 }
 
-function trimTextUntilSize(text, maxLengthAround, omission) {
+function trimTextUntilSize(text: string, maxLengthAround: number, omission: string): string {
   const wordsInput = text.split(' ').reverse();
   const firstWord = wordsInput[0];
 
@@ -73,7 +81,7 @@ function trimTextUntilSize(text, maxLengthAround, omission) {
   return wordsOutput.reverse().join(' ');
 }
 
-function trimTextUntilSizeFromEnd(text, maxLengthAround, omission) {
+function trimTextUntilSizeFromEnd(text: string, maxLengthAround: number, omission: string): string {
   const wordsInput = text.split(' ');
   const firstWord = wordsInput[0];
 
@@ -92,7 +100,7 @@ function trimTextUntilSizeFromEnd(text, maxLengthAround, omission) {
   return wordsOutput.join(' ');
 }
 
-function getWordsUntilLength(words, maxLength) {
+function getWordsUntilLength(words: string[], maxLength: number): string[] {
   const wordsOutput = [];
   let outputLength = 0;
 
