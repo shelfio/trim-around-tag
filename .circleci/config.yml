@@ -1,26 +1,41 @@
-version: 2
+version: 2.1
+
+executors:
+  node12:
+    docker:
+      - image: circleci/node:12
+    working_directory: ~/repo
+    environment:
+      - TOOL_NODE_FLAGS: '--max-old-space-size=4800'
+
+orbs:
+  node: circleci/node@1.1.6
+  packtracker: packtracker/report@2.2.7
+
+commands:
+  install_deps:
+    steps:
+      - node/with-cache:
+          cache-version: v1-all
+          cache-key: package.json
+          use-strict-cache: true
+          steps:
+            - run: yarn install --pure-lockfile --ignore-scripts --no-progress
 
 jobs:
   build:
-    docker:
-      - image: circleci/node:8
-
-    working_directory: ~/repo
-
+    executor: node12
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
+      - install_deps
 
-      - run: yarn
       - run: yarn lint:ci
       - run: yarn build
       - run: yarn test
 
-      - save_cache:
-          paths:
-            - node_modules
-            - yarn.lock
-          key: v1-dependencies-{{ checksum "package.json" }}
+workflows:
+  version: 2
+
+  build_deploy:
+    jobs:
+      - build
