@@ -1,3 +1,10 @@
+import {
+  isTextTooSmallToTrim,
+  isTextWithoutHighlights,
+  trimTextUntilSize,
+  trimTextUntilSizeFromEnd
+} from './helpers';
+
 interface TrimTextAroundTagParams {
   text?: string;
   maxLengthAround?: number;
@@ -19,7 +26,7 @@ export function trimTextAroundTag({
     return text;
   }
 
-  if (isTextWithoutHighlights({text, OPEN_TAG})) {
+  if (isTextWithoutHighlights(text, OPEN_TAG)) {
     return text;
   }
 
@@ -46,78 +53,4 @@ export function trimTextAroundTag({
   }
 
   return textTrimmed.trim();
-}
-
-function isTextTooSmallToTrim(text: string, maxLengthAround: number): boolean {
-  return text.length <= maxLengthAround;
-}
-
-function isTextWithoutHighlights({text, OPEN_TAG}: {text: string; OPEN_TAG: string}): boolean {
-  const firstHighlightStartIndex = text.indexOf(OPEN_TAG);
-
-  return firstHighlightStartIndex === -1;
-}
-
-function trimTextUntilSize(text: string, maxLengthAround: number, omission: string): string {
-  const wordsInput = text.split(' ').reverse();
-  const firstWord = wordsInput[0];
-
-  if (firstWord.length > maxLengthAround) {
-    const croppedWord = [...firstWord]
-      .reverse()
-      .slice(0, maxLengthAround)
-      .reverse()
-      .join('');
-
-    return `${omission}${croppedWord}`;
-  }
-
-  const wordsOutput = getWordsUntilLength(wordsInput, maxLengthAround);
-
-  if (wordsInput.length > wordsOutput.length) {
-    return `${omission}${wordsOutput.reverse().join(' ')}`;
-  }
-
-  return wordsOutput.reverse().join(' ');
-}
-
-function trimTextUntilSizeFromEnd(text: string, maxLengthAround: number, omission: string): string {
-  const wordsInput = text.split(' ');
-  const firstWord = wordsInput[0];
-
-  if (firstWord.length > maxLengthAround) {
-    const croppedWord = firstWord.slice(0, maxLengthAround);
-
-    return `${croppedWord}${omission}`;
-  }
-
-  const wordsOutput = getWordsUntilLength(wordsInput, maxLengthAround);
-
-  if (wordsInput.length > wordsOutput.length) {
-    return `${wordsOutput.join(' ')}${omission}`;
-  }
-
-  return wordsOutput.join(' ');
-}
-
-function getWordsUntilLength(words: string[], maxLength: number): string[] {
-  const wordsOutput = [];
-  let outputLength = 0;
-
-  for (const word of words) {
-    const willTextBecomeTooLong = outputLength + word.length + 1 > maxLength;
-
-    if (willTextBecomeTooLong) {
-      return wordsOutput;
-    }
-
-    const isTextStillShort = outputLength <= maxLength;
-
-    if (isTextStillShort) {
-      wordsOutput.push(word);
-      outputLength += word.length + 1;
-    }
-  }
-
-  return wordsOutput;
 }
