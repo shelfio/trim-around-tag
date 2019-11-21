@@ -2,22 +2,13 @@
   "name": "@shelf/trim-around-tag",
   "version": "2.0.5",
   "description": "Trims text to max length around custom HTML tag",
-  "license": "MIT",
+  "keywords": [],
   "repository": "shelfio/trim-around-tag",
+  "license": "MIT",
   "author": {
     "name": "Vlad Holubiev",
     "email": "vlad@shelf.io",
     "url": "shelf.io"
-  },
-  "engines": {
-    "node": ">=6"
-  },
-  "scripts": {
-    "build": "microbundle",
-    "coverage": "jest --coverage",
-    "lint": "eslint . --fix",
-    "prepack": "yarn build",
-    "test": "jest"
   },
   "files": [
     "index.js",
@@ -27,7 +18,33 @@
   "umd:main": "dist/trim-around-tag.umd.js",
   "module": "dist/trim-around-tag.m.js",
   "source": "index.js",
-  "keywords": [],
+  "scripts": {
+    "build": "microbundle",
+    "coverage": "jest --coverage",
+    "lint": "eslint . --ext .js,.ts,.json --fix",
+    "lint:ci": "eslint . --ext .js,.ts,.json",
+    "prepack": "yarn build",
+    "test": "jest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "post-commit": "git update-index --again"
+    }
+  },
+  "lint-staged": {
+    "*.{html,json,md,yml}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{ts,js}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "devDependencies": {
     "@shelf/eslint-config": "0.11.0",
     "eslint": "6.6.0",
@@ -37,19 +54,8 @@
     "microbundle": "0.11.0",
     "prettier": "1.19.1"
   },
-  "jest": {
-    "testEnvironment": "node"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
+  "engines": {
+    "node": ">=6"
   },
   "publishConfig": {
     "access": "public"

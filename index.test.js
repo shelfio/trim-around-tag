@@ -7,6 +7,7 @@ describe('#trimTextAroundTag', () => {
 
   it('should return text as it is when not so many chars aruond highlight', () => {
     const text = ' <em>strongest</em>  cyclone in the Arabian Sea.';
+
     expect(trimTextAroundTag({text})).toEqual(text);
   });
 
@@ -142,7 +143,7 @@ describe('#trimTextAroundTag', () => {
     expect(result).toEqual(text);
   });
 
-  it('should not truncate text which has no highlights', () => {
+  it('should not truncate text with very long words', () => {
     const text = [
       `asdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsadds`,
       `fasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjag`,
@@ -176,7 +177,7 @@ describe('#trimTextAroundTag', () => {
     expect(result).toEqual(`...aaoi<em>hell...</em>tdaa...`);
   });
 
-  it('should truncate text w/o spaces', () => {
+  it('should truncate text w/ almost no spaces', () => {
     const text = `asdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsf asdasdasdfasdfsadF asdasdasdfasdfsadF asd fsa Df asdf asd Fa SD test search <em>term</em> to highlight 1 asdasdfasdfasdf. sagdfdfgth asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF djfg gf dfghdfg h fdg hgf h dfg h test search &lt;em&gt;<em>term</em>&lt;/em&gt; to highlight 2. asd as df sadf sa dg sad g sadg test search &lt;em&gt;<em>term</em>&lt;/em&gt; to highlight 3 asdf Asd fsa DFa DSf sad..`;
     const result = trimTextAroundTag({text, maxLengthAround: 80, omission: ' ... '});
 

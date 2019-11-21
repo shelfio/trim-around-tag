@@ -26,10 +26,10 @@ module.exports.trimTextAroundTag = function({
       }
 
       if (isEvenTextPart) {
-        return trimTextUntilSize(textPart, maxLengthAround, omission) + '<em>';
+        return `${trimTextUntilSize(textPart, maxLengthAround, omission)}<em>`;
       }
 
-      return trimTextUntilSizeFromEnd(textPart, maxLengthAround, omission) + '</em>';
+      return `${trimTextUntilSizeFromEnd(textPart, maxLengthAround, omission)}</em>`;
     })
     .join('');
 
