@@ -13,11 +13,7 @@ export function trimTextUntilSize(text: string, maxLengthAround: number, omissio
   const firstWord = wordsInput[0];
 
   if (firstWord.length > maxLengthAround) {
-    const croppedWord = [...firstWord]
-      .reverse()
-      .slice(0, maxLengthAround)
-      .reverse()
-      .join('');
+    const croppedWord = [...firstWord].reverse().slice(0, maxLengthAround).reverse().join('');
 
     return `${omission}${croppedWord}`;
   }
