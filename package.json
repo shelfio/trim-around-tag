@@ -18,13 +18,14 @@
   "scripts": {
     "build": "rm -rf lib/ && yarn build:types && yarn build:webpack",
     "build:types": "tsc -p tsconfig.types.json",
-    "build:webpack": "yarn build:webpack.config && NODE_ENV=production webpack",
-    "build:webpack.config": "tsc --lib es6 --skipLibCheck --allowSyntheticDefaultImports --esModuleInterop webpack.config.ts",
+    "build:webpack": "NODE_ENV=production webpack",
     "coverage": "jest --coverage",
     "lint": "eslint . --ext .js,.ts,.json --fix",
     "lint:ci": "eslint . --ext .js,.ts,.json",
     "prepack": "yarn build",
-    "test": "jest"
+    "test": "TZ=UTC jest src",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch"
   },
   "husky": {
     "hooks": {
