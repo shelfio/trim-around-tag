@@ -3,3 +3,4 @@ lib/
 renovate.json
 tsconfig.json
 tsconfig.types.json
+package.json
