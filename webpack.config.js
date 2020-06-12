@@ -1,7 +1,6 @@
-import webpack from 'webpack';
-import {resolve} from 'path';
+const {resolve} = require('path');
 
-const config: webpack.Configuration = {
+module.exports = {
   mode: 'production',
   entry: './src/index.ts',
   target: 'node',
@@ -33,5 +32,3 @@ const config: webpack.Configuration = {
     extensions: ['.ts', '.tsx', '.js', '.json']
   }
 };
-
-export default config;
