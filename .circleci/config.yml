@@ -19,6 +19,7 @@ jobs:
     executor:
       name: node/default
       tag: '12'
+    working_directory: ~/repo
     steps:
       - checkout
       - install_deps
