@@ -10,7 +10,6 @@ executors:
 
 orbs:
   node: circleci/node@1.1.6
-  packtracker: packtracker/report@2.2.8
 
 commands:
   install_deps:
@@ -39,4 +38,3 @@ workflows:
   build_deploy:
     jobs:
       - build
-      - packtracker/report
