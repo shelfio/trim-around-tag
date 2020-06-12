@@ -7,7 +7,7 @@ commands:
   install_deps:
     steps:
       - node/with-cache:
-          cache-version: v2-all
+          cache-version: v3-all
           cache-key: package.json
           dir: ~/repo/node_modules
           use-strict-cache: true
