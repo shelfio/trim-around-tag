@@ -4,7 +4,7 @@ executors:
   node12:
     docker:
       - image: circleci/node:12
-    working_directory: ~/repo
+    working_directory: /mnt/ramdisk
     environment:
       - TOOL_NODE_FLAGS: '--max-old-space-size=4800'
 
