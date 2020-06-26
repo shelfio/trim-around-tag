@@ -56,7 +56,7 @@
     "@shelf/prettier-config": "0.0.7",
     "@types/jest": "26.0.0",
     "@types/node": "10",
-    "@types/webpack": "4.41.17",
+    "@types/webpack": "4.41.18",
     "babel-jest": "26.0.1",
     "babel-loader": "8.1.0",
     "eslint": "7.3.0",
