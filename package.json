@@ -49,8 +49,8 @@
   },
   "devDependencies": {
     "@babel/cli": "7.10.5",
-    "@babel/core": "7.10.5",
-    "@babel/preset-env": "7.10.4",
+    "@babel/core": "7.11.0",
+    "@babel/preset-env": "7.11.0",
     "@babel/preset-typescript": "7.10.4",
     "@shelf/eslint-config": "0.18.0",
     "@shelf/prettier-config": "0.0.7",
@@ -65,7 +65,7 @@
     "lint-staged": "10.2.11",
     "prettier": "2.0.5",
     "typescript": "3.9.7",
-    "webpack": "4.44.0",
+    "webpack": "4.44.1",
     "webpack-cli": "3.3.12"
   },
   "engines": {
