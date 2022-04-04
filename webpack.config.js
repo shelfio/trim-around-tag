@@ -9,10 +9,10 @@ module.exports = {
     umdNamedDefine: true,
     filename: 'index.js',
     path: resolve(__dirname, 'lib'),
-    globalObject: `(typeof self !== 'undefined' ? self : this)`
+    globalObject: `(typeof self !== 'undefined' ? self : this)`,
   },
   optimization: {
-    minimize: true
+    minimize: true,
   },
   module: {
     rules: [
@@ -21,14 +21,14 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            cacheDirectory: true
-          }
-        }
-      }
-    ]
+            cacheDirectory: true,
+          },
+        },
+      },
+    ],
   },
   resolve: {
     modules: ['node_modules'],
-    extensions: ['.ts', '.tsx', '.js', '.json']
-  }
+    extensions: ['.ts', '.tsx', '.js', '.json'],
+  },
 };
