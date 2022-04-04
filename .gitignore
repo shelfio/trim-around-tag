@@ -6,3 +6,4 @@ yarn.lock
 *.log
 .DS_Store
 lib/
+!.husky/_/husky.sh

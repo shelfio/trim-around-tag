@@ -27,12 +27,6 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "post-commit": "git update-index --again"
-    }
-  },
   "lint-staged": {
     "*.{html,md,yml}": [
       "prettier --write",
@@ -44,27 +38,24 @@
     ]
   },
   "prettier": "@shelf/prettier-config",
-  "jest": {
-    "testEnvironment": "node"
-  },
   "devDependencies": {
     "@babel/cli": "7.17.6",
     "@babel/core": "7.17.5",
     "@babel/preset-env": "7.16.11",
     "@babel/preset-typescript": "7.16.7",
-    "@shelf/eslint-config": "0.19.0",
-    "@shelf/prettier-config": "0.0.7",
+    "@shelf/eslint-config": "2.16.0",
+    "@shelf/prettier-config": "1.0.0",
     "@types/jest": "27.4.1",
     "@types/node": "10",
     "@types/webpack": "4.41.21",
     "babel-jest": "27.5.1",
     "babel-loader": "8.2.3",
-    "eslint": "8.10.0",
-    "husky": "4.3.8",
+    "eslint": "8.12.0",
+    "husky": "7.0.4",
     "jest": "27.5.1",
-    "lint-staged": "12.3.5",
-    "prettier": "2.5.1",
-    "typescript": "4.6.2",
+    "lint-staged": "12.3.7",
+    "prettier": "2.6.2",
+    "typescript": "4.6.3",
     "webpack": "4.44.1",
     "webpack-cli": "3.3.12"
   },
