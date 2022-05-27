@@ -43,7 +43,7 @@
     "@babel/core": "7.17.12",
     "@babel/preset-env": "7.17.12",
     "@babel/preset-typescript": "7.17.12",
-    "@shelf/eslint-config": "2.16.0",
+    "@shelf/eslint-config": "2.18.0",
     "@shelf/prettier-config": "1.0.0",
     "@types/jest": "27.5.1",
     "@types/node": "10",
