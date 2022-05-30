@@ -26,7 +26,7 @@ describe('#trimTextAroundTag', () => {
       `northeastward while rounding the ridge to the east.[15] Increasingly cooler and drier air, `,
       `as well as cooler waters, caused the storm to degrade rapidly.[2] The eye, previously small `,
       `and well defined, dissipated by 06:00 UTC on October 29.[16] Lateras well as cooler waters, `,
-      `caused the storm to degrade rapidly.[2] The eye, previously small and well defined, dissipated by 06:00 UTC on October 29.[16] Later`
+      `caused the storm to degrade rapidly.[2] The eye, previously small and well defined, dissipated by 06:00 UTC on October 29.[16] Later`,
     ].join('');
     const result = trimTextAroundTag({text});
 
@@ -36,7 +36,7 @@ describe('#trimTextAroundTag', () => {
         `[12] At 18:00 UTC on October 28, the IMD estimated peak 3-minute winds of 205 km/h (125 mph).`,
         `[2] At the time, it was the <em>third</em>-<em>strongest</em> storm on record in the Arabian `,
         `Sea.[13] On October 29, Nilofar started weakening due to increased wind shear, and the convection `,
-        `diminished in intensity.[14] At the same time, the storm turned`
+        `diminished in intensity.[14] At the same time, the storm turned`,
       ].join('')
     );
   });
@@ -64,7 +64,7 @@ describe('#trimTextAroundTag', () => {
       `In late October 2014, it reached peak maximum sustained winds estimated between 205 km/h `,
       `(125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named it Nilofar; `,
       `the name refers to the water lily, and was suggested by Pakistan.[1] `,
-      `The western fringes of the storm caused flash flooding in northeastern Oman, killing four people.`
+      `The western fringes of the storm caused flash flooding in northeastern Oman, killing four people.`,
     ].join('');
     const result = trimTextAroundTag({text});
 
@@ -99,7 +99,7 @@ describe('#trimTextAroundTag', () => {
       `In late October 2014, it reached peak maximum sustained winds estimated between 205 km/h `,
       `(125 mph) and 215 km/h (130 mph). The India Meteorological Department (IMD) named it Nilofar; `,
       `the name refers to the water lily, and was suggested by Pakistan.[1] `,
-      `The western fringes of the storm caused flash flooding in northeastern Oman, killing four people.`
+      `The western fringes of the storm caused flash flooding in northeastern Oman, killing four people.`,
     ].join('');
     const result = trimTextAroundTag({text, omission: '...'});
 
@@ -127,7 +127,7 @@ describe('#trimTextAroundTag', () => {
       `northeastward while rounding the ridge to the east.[15] Increasingly cooler and drier air, `,
       `as well as cooler waters, caused the storm to degrade rapidly.[2] The eye, previously small `,
       `and well defined, dissipated by 06:00 UTC on October 29.[16] Lateras well as cooler waters, `,
-      `caused the storm to degrade rapidly.[2] The eye, previously small and well defined, dissipated by 06:00 UTC on October 29.[16] Later`
+      `caused the storm to degrade rapidly.[2] The eye, previously small and well defined, dissipated by 06:00 UTC on October 29.[16] Later`,
     ].join('');
     const result = trimTextAroundTag({text, maxLengthAround: 50});
 
@@ -154,7 +154,7 @@ describe('#trimTextAroundTag', () => {
       `kjfdsfasdasdasdfasdfsadFsaddsfasdfasdfasdfasdfasdfasdfasdfjagdkjfagdskjfdsf asdasdasdfasdfsadF asdasda`,
       `sdfasdfsadF asd fsa Df asdf asd Fa SD test search <em>term</em> to highlight 1 asdasdfasdfasdf. sagdfdfgth `,
       `asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF asdasdasdfasdfsadF `,
-      `asdasdasdfasdfsadF djfg gf dfghdfg h fdg hgf h dfg h test search <em>term</em> to highlight 2. asd as df sadf sa dg sad g sadg test search <em>term</em> to highlight 3 asdf Asd fsa DFa DSf sad..`
+      `asdasdasdfasdfsadF djfg gf dfghdfg h fdg hgf h dfg h test search <em>term</em> to highlight 2. asd as df sadf sa dg sad g sadg test search <em>term</em> to highlight 3 asdf Asd fsa DFa DSf sad..`,
     ].join('');
     const result = trimTextAroundTag({text, maxLengthAround: 80, omission: ' ... '});
 

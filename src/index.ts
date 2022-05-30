@@ -2,23 +2,23 @@ import {
   isTextTooSmallToTrim,
   isTextWithoutHighlights,
   trimTextUntilSize,
-  trimTextUntilSizeFromEnd
+  trimTextUntilSizeFromEnd,
 } from './helpers';
 
-interface TrimTextAroundTagParams {
+type TrimTextAroundTagParams = {
   text?: string;
   maxLengthAround?: number;
   maxTotalLength?: number;
   tag?: string;
   omission?: string;
-}
+};
 
 export function trimTextAroundTag({
   text = '',
   maxLengthAround = 200,
   maxTotalLength = 500,
   tag = 'em',
-  omission = ''
+  omission = '',
 }: TrimTextAroundTagParams): string {
   const OPEN_TAG = `<${tag}>`;
 

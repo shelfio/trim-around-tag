@@ -11,10 +11,10 @@ module.exports = {
             'last 4 firefox versions',
             'last 2 edge versions',
             'last 2 safari versions',
-            'ie >= 11'
-          ]
-        }
-      }
-    ]
-  ]
+            'ie >= 11',
+          ],
+        },
+      },
+    ],
+  ],
 };
