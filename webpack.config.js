@@ -5,7 +5,9 @@ module.exports = {
   entry: './src/index.ts',
   target: 'node',
   output: {
-    libraryTarget: 'umd',
+    library: {
+      type: 'umd',
+    },
     umdNamedDefine: true,
     filename: 'index.js',
     path: resolve(__dirname, 'lib'),
