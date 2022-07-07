@@ -58,7 +58,7 @@
     "webpack-cli": "4.10.0"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=14"
   },
   "publishConfig": {
     "access": "public"
