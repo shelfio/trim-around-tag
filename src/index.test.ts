@@ -1,4 +1,4 @@
-import {trimTextAroundTag} from '.';
+import {trimTextAroundTag} from './index.js';
 
 describe('#trimTextAroundTag', () => {
   it('should export trimTextAroundTag', () => {

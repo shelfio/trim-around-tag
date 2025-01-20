@@ -3,7 +3,7 @@ import {
   isTextWithoutHighlights,
   trimTextUntilSize,
   trimTextUntilSizeFromEnd,
-} from './helpers';
+} from './helpers.js';
 
 type TrimTextAroundTagParams = {
   text?: string;
