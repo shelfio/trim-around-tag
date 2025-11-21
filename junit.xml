@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="12" failures="0" errors="0" time="0.085">
+  <testsuite name="#trimTextAroundTag" errors="0" failures="0" skipped="0" timestamp="2025-11-21T16:45:11" time="0.053" tests="12">
+    <testcase classname="#trimTextAroundTag should export trimTextAroundTag" name="#trimTextAroundTag should export trimTextAroundTag" time="0.001">
+    </testcase>
+    <testcase classname="#trimTextAroundTag should return text as it is when not so many chars aruond highlight" name="#trimTextAroundTag should return text as it is when not so many chars aruond highlight" time="0.001">
+    </testcase>
+    <testcase classname="#trimTextAroundTag should truncate text to ~200 chars around highlight (sample 1)" name="#trimTextAroundTag should truncate text to ~200 chars around highlight (sample 1)" time="0">
+    </testcase>
+    <testcase classname="#trimTextAroundTag should truncate text to ~200 chars around highlight (sample 2)" name="#trimTextAroundTag should truncate text to ~200 chars around highlight (sample 2)" time="0.001">
+    </testcase>
+    <testcase classname="#trimTextAroundTag should truncate text around highlight (sample 2) and add omission marks" name="#trimTextAroundTag should truncate text around highlight (sample 2) and add omission marks" time="0">
+    </testcase>
+    <testcase classname="#trimTextAroundTag should truncate text to ~50 chars around highlight" name="#trimTextAroundTag should truncate text to ~50 chars around highlight" time="0">
+    </testcase>
+    <testcase classname="#trimTextAroundTag should not truncate text which has no highlights" name="#trimTextAroundTag should not truncate text which has no highlights" time="0">
+    </testcase>
+    <testcase classname="#trimTextAroundTag should not truncate text with very long words" name="#trimTextAroundTag should not truncate text with very long words" time="0">
+    </testcase>
+    <testcase classname="#trimTextAroundTag should not truncate text which has only highlights" name="#trimTextAroundTag should not truncate text which has only highlights" time="0.001">
+    </testcase>
+    <testcase classname="#trimTextAroundTag should truncate text w/o spaces" name="#trimTextAroundTag should truncate text w/o spaces" time="0">
+    </testcase>
+    <testcase classname="#trimTextAroundTag should truncate text w/ almost no spaces" name="#trimTextAroundTag should truncate text w/ almost no spaces" time="0">
+    </testcase>
+    <testcase classname="#trimTextAroundTag should aggressively trim text when maxTotalLength is small" name="#trimTextAroundTag should aggressively trim text when maxTotalLength is small" time="0.001">
+    </testcase>
+  </testsuite>
+</testsuites>
