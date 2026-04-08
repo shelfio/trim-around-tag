@@ -31,7 +31,7 @@
   "prettier": "@shelf/prettier-config",
   "devDependencies": {
     "@eslint/eslintrc": "3.3.1",
-    "@eslint/js": "9.39.1",
+    "@eslint/js": "10.0.1",
     "@shelf/eslint-config": "5.3.4",
     "@shelf/prettier-config": "1.0.0",
     "@shelf/tsconfig": "0.1.0",
