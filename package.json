@@ -31,7 +31,9 @@
   "prettier": "@shelf/prettier-config",
   "pnpm": {
     "overrides": {
-      "flatted@<=3.4.1": "3.4.2"
+      "flatted@<=3.4.1": "3.4.2",
+      "minimatch@>=3.0.0 <3.1.3": "3.1.3",
+      "minimatch@>=9.0.0 <9.0.7": "9.0.7"
     }
   },
   "devDependencies": {
