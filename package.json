@@ -34,7 +34,7 @@
     "@eslint/js": "10.0.1",
     "@shelf/eslint-config": "7.1.0",
     "@shelf/prettier-config": "1.0.0",
-    "@shelf/tsconfig": "0.1.0",
+    "@shelf/tsconfig": "0.2.0",
     "@swc/core": "1.15.3",
     "@swc/jest": "0.2.39",
     "@types/jest": "30.0.0",
